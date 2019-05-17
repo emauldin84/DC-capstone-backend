@@ -12,7 +12,6 @@ create table trips (
     trip_state varchar(200),
     trip_country varchar(200),
     trip_date date,
-    trip_status varchar(100),  -- past or future trip? need logic to determine this
     lat varchar(100),
     lon varchar(100),
     trip_details varchar(5000),
