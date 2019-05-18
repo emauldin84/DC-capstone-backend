@@ -4,12 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "db:create": "createdb capstone-trip-app",
+    "db:init": "psql -f schema.sql capstone-trip-app && psql -f seed.sql capstone-trip-app",
+    "db:destroy": "dropdb capstone-trip-app",
+    "db:reset": "npm run db:destroy; npm run db:create && npm run db:init"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "express": "^4.17.0",
     "express-es6-template-engine": "^2.1.9",
     "pg-promise": "^8.7.2"

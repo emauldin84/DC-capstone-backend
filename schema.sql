@@ -4,7 +4,7 @@ create table users (
     last_name varchar(200),
     email varchar(100),
     user_password varchar(200)
-)
+);
 
 create table trips (
     id serial primary key,
@@ -14,7 +14,7 @@ create table trips (
     trip_date date,
     lat varchar(100),
     lon varchar(100),
-    trip_details varchar(5000),
+    trip_details varchar(8000),
     trip_photos varchar(200),
     user_id integer references users(id)
-)
+);
