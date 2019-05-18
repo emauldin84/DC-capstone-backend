@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.0",
     "express-es6-template-engine": "^2.1.9",
     "pg-promise": "^8.7.2"

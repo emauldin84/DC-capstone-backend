@@ -49,10 +49,10 @@ class User {
             where id = ${this.id}`);
     }
 
-    static addNewUser(firstName, LastName, email, userPassword) {
+    static addNewUser(first_name, last_name, email, user_password) {
         return db.result(`
-        INSERT INTO users(first_name, last_name, email, user_password)
-        VALUES($1, $2, $3, $4)` [first_name, last_name, email, user_password]
+        INSERT into users(first_name, last_name, email, user_password)
+        VALUES($1, $2, $3, $4)`, [first_name, last_name, email, user_password]
         )
     }
 
