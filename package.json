@@ -16,9 +16,13 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "express-es6-template-engine": "^2.1.9",
-    "pg-promise": "^8.7.2"
+    "express-session": "^1.16.1",
+    "helmet": "^3.18.0",
+    "pg-promise": "^8.7.2",
+    "session-file-store": "^1.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.0"
