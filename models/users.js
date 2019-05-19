@@ -22,20 +22,36 @@ class User {
         SELECT * from users
         WHERE id=${userId}
         `)
+        .then(userData => {
+            const userInstance = new User (
+                userData.id, 
+                userData.first_name, 
+                userData.last_name, 
+                userData.email, 
+                userData.user_password
+                )
+            return userInstance;
+        })
+        .catch(err => err)
     }
 
-    static getByEmail(email) {
+    static getUserByEmail(email) {
         return db.one(`
-        SELECT * FROM users 
-        WHERE email=$1`, [email])
-            .then((userData) => {
-                console.log(userData);
-                const userInstance = new User(userData.id, userData.first_name, userData.last_name, userData.email, userData.user_password);
-                console.log("+++++++++++++++++")
-                console.log(userInstance)
-                return userInstance;
-            })
-            .catch(err => err)
+        SELECT * FROM users
+        WHERE email=$1
+        `, [email])
+        .then(userData => {
+            // console.log(userData);
+            const userInstance = new User (
+                userData.id, 
+                userData.first_name, 
+                userData.last_name, 
+                userData.email, 
+                userData.user_password
+                )
+            return userInstance;
+        })
+        .catch(err => err)
     }
 
     save() {

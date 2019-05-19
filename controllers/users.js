@@ -1,29 +1,44 @@
 const User = require('../models/users')
 
 async function getAllUsers(req, res) {
-    // console.log(req);
-
     const usersArray = await User.getAllUsers();
 
     res.send(usersArray)
 }
 
 async function addNewUser(req, res) {
-    console.log('req.body:', req.body)
-    // const newUser = await User.getByEmail(req.body.email);
+    // console.log('req.body:', req.body)
+    const newUser = await User.getUserByEmail(req.body.email);
 
-    // if (!newUser.email) {
+    if (!newUser.email) {
         const newPassword = User.hashPassword(req.body.password);
-        let newUser = await User.addNewUser(req.body.first_name, req.body.last_name, req.body.email, newPassword)
+        await User.addNewUser(req.body.first_name, req.body.last_name, req.body.email, newPassword)
 
         res.send(newUser)
-        // req.session.email = req.body.email;
-    // }
+        req.session.email = req.body.email;
+        console.log('this is the req.session.email:', req.session.email);
+        req.session.save()
+    } else if (newUser.email) {
+        console.log('that email address already exists!')
+    }
+}
 
+async function getUserByEmail(req, res) {
+    const userInstance = await User.getUserByEmail(req.params.email)
+
+    res.send(userInstance)
+}
+
+async function getUserById(req, res) {
+    const userInstance = await User.getUserById(req.params.id)
+
+    res.send(userInstance)
 }
 
 
 module.exports = {
     getAllUsers,
-    addNewUser
+    addNewUser,
+    getUserByEmail,
+    getUserById,
 }
