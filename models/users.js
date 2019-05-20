@@ -4,10 +4,10 @@ const bcrypt = require('bcryptjs')
 class User {
     constructor(id, first_name, last_name, email, user_password) {
         this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = first_name;
+        this.lastName = last_name;
         this.email = email;
-        this.user_password = user_password;
+        this.userPassword = user_password;
     }
 
     static getAllUsers() {
@@ -36,6 +36,7 @@ class User {
     }
 
     static getUserByEmail(email) {
+        console.log(email)
         return db.one(`
         SELECT * FROM users
         WHERE email=$1
@@ -51,7 +52,7 @@ class User {
                 )
             return userInstance;
         })
-        .catch(err => err)
+        .catch(err => console.log((err)))
     }
 
     save() {
@@ -80,8 +81,9 @@ class User {
         return bcrypt.hashSync(password, 10);  //10 is my salt
     }
 
-    checkPassword(password) {
-        return bcrypt.compareSync(password, this.password);
+    checkPassword(password, dbPassword) {
+        console.log('password', password, 'dbPassword', dbPassword)
+        return bcrypt.compareSync(password, dbPassword);
     }
 }
 

@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "nodemonConfig": {
+    "ignore": [
+      "sessions",
+      "propertyphotos"
+    ]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
+    "dev": "nodemon --ignore sessions index.js",
     "db:create": "createdb capstone-trip-app",
     "db:init": "psql -f schema.sql capstone-trip-app && psql -f seed.sql capstone-trip-app",
     "db:destroy": "dropdb capstone-trip-app",
