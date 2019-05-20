@@ -14,9 +14,10 @@ async function addNewUser(req, res) {
         const newPassword = User.hashPassword(req.body.password);
         await User.addNewUser(req.body.first_name, req.body.last_name, req.body.email, newPassword)
 
-        res.send(newUser)
         req.session.email = req.body.email;
+        req.session.id = req.body.id;
         console.log('this is the req.session.email:', req.session.email);
+        console.log('this is the req.session.id:', req.session.id);
         req.session.save()
     } else if (newUser.email) {
         // how to translate this message to react?
@@ -25,16 +26,18 @@ async function addNewUser(req, res) {
 }
 
 async function getUserByEmail(req, res) {
-    const userInstance = await User.getUserByEmail(req.params.email)
+    const userInstance = await User.getUserByEmail(req.session.email)
 
     res.send(userInstance)
 }
 
 async function getUserById(req, res) {
-    const userInstance = await User.getUserById(req.params.id)
+    const userInstance = await User.getUserById(req.session.id)
 
     res.send(userInstance)
 }
+
+// async function checkUserLogin
 
 
 module.exports = {

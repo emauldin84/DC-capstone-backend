@@ -16,7 +16,7 @@ async function getTripById(req, res) {
 
 async function getTripsByUserId(req, res) {
     console.log(req.params)
-    const tripsArray = await Trip.getTripsByUserId(req.params.user_id)
+    const tripsArray = await Trip.getTripsByUserId(req.session.id)
 
     res.send(tripsArray);
 }

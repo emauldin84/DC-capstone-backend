@@ -1,7 +1,7 @@
 -- dummy data for testing
 
 INSERT into users(first_name, last_name, email, user_password)
-VALUES ('Eric', 'Mauldin', 'eric@test.com', 'test'),
+VALUES ('Eric', 'Mauldin', 'eric@test.com', '$2a$10$nmgX6WiIMM4j4ZSpq5Tg5OeGloezcF/jxW4qRwfYzNun4ifvw9afi'),
 ('Caitie', 'Cirou', 'caitie@test.com', 'test'),
 ('Koa', 'Cirou', 'koa@test.com', 'test');
 
