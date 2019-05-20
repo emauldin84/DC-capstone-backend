@@ -19,6 +19,7 @@ async function addNewUser(req, res) {
         console.log('this is the req.session.email:', req.session.email);
         req.session.save()
     } else if (newUser.email) {
+        // how to translate this message to react?
         console.log('that email address already exists!')
     }
 }

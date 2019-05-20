@@ -9,18 +9,18 @@ app.use(helmet());
 
 app.use(express.urlencoded({extended: true}));
 
-const session = require('express-session');
-const FileStore = require('session-file-store')(session);
+// const session = require('express-session');
+// const FileStore = require('session-file-store')(session);
 
 
 const usersRouter = require('./routes/users');
 const tripsRouter = require('./routes/trips');
 
-app.use(session( {
-    store: new FileStore(),
-    secret: process.env.SECRET
-}
-));
+// app.use(session( {
+//     store: new FileStore(),
+//     secret: process.env.SECRET
+// }
+// ));
 
 app.use('/users', usersRouter);
 app.use('/trips', tripsRouter);
