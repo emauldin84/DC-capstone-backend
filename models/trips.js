@@ -32,6 +32,26 @@ class Trip {
         })
         .catch(err => err)
     }
+    static getTripsByUserId(user_id) {
+        return db.any(`
+        SELECT * from trips
+        WHERE user_id = ${user_id};
+        `)
+        .then(tripsData => {
+            const tripArray = tripsData.map(trip => new Trip(
+                trip.id,
+                trip.trip_location,
+                trip.trip_date,
+                trip.lat,
+                trip.lon,
+                trip.trip_details,
+                trip.trip_photos,
+                trip.user_id,
+            ))
+            return tripArray;
+        })
+        .catch(err => err)
+    }
 
     static getAllTrips() {
         return db.any(`
@@ -48,7 +68,6 @@ class Trip {
         )
     }
 
-    // Should editTrip recieve an object as an argument instead?
     static editTrip(location, date, lat, lon, details, photos, tripId) {
         return db.result(`
         UPDATE trips

@@ -12,7 +12,7 @@ create table trips (
     trip_date date,
     lat varchar(100),
     lon varchar(100),
-    trip_details varchar(8000),
+    trip_details text,
     trip_photos varchar(2000),
     user_id integer references users(id)
 );

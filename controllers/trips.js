@@ -14,6 +14,13 @@ async function getTripById(req, res) {
     res.send(tripInstance);
 }
 
+async function getTripsByUserId(req, res) {
+    console.log(req.params)
+    const tripsArray = await Trip.getTripsByUserId(req.params.user_id)
+
+    res.send(tripsArray);
+}
+
 // grab user ID from req.session.userId to pass to new trip?
 async function addNewTrip(req, res) {
     console.log('USER ID', User.id)
@@ -41,4 +48,5 @@ module.exports = {
     addNewTrip,
     editTrip,
     deleteTrip,
+    getTripsByUserId,
 }
