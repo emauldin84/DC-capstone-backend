@@ -5,6 +5,7 @@ const app = express();
 const port = process.env.PORT;
 const helmet = require('helmet');
 const signInRouter = require('./routes/signin')
+const cors = require('cors');
 
 app.use(helmet());
 
@@ -18,6 +19,7 @@ app.use(session( {
 ));
 
 app.use(express.urlencoded({extended: true}));
+app.use(cors());
 const es6Renderer = require('express-es6-template-engine');
 app.engine('html', es6Renderer);
 app.set('views','views');
@@ -47,7 +49,7 @@ app.use('/', (req, res) => {
     console.log('sending to index')
     // res.json({'message': 'success'})})
     res.render('index')
-    
+
 })
 app.use('*', (res => res.json({'message': '404: Page does not exist'})))
 
