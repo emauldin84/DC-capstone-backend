@@ -13,7 +13,7 @@ const {
 
 tripsRouter.get('/alltrips', getAllTrips);
 tripsRouter.get('/trip/:id', getTripById);
-tripsRouter.get('/usertrips/:user_id', getTripsByUserId);
+tripsRouter.get('/', getTripsByUserId);
 tripsRouter.post('/add', addNewTrip);
 tripsRouter.post('/edit/:id', editTrip);
 tripsRouter.post('/delete/:id', deleteTrip);
