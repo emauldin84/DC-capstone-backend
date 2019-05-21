@@ -15,10 +15,11 @@ async function getTripById(req, res) {
 }
 
 async function getTripsByUserId(req, res) {
-    console.log(req.params)
-    const tripsArray = await Trip.getTripsByUserId(req.session.id)
+    
+    const tripsArray = await Trip.getTripsByUserId(req.session.user.id)
+    console.log(tripsArray);
 
-    res.send(tripsArray);
+    res.json(tripsArray);
 }
 
 // grab user ID from req.session.userId to pass to new trip?

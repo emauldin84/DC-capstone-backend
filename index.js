@@ -38,6 +38,7 @@ app.use('*', (req, res, next) => {
         console.log('nooo')
         // res.redirect('/signin')
     }
+    console.log(req.path);
     next();
     // req.session ? () => console.log('yay') : () => console.log('nooo')
     // req.session.user ? next() : res.redirect('/signin')
