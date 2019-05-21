@@ -31,7 +31,6 @@ app.use('/signin', signInRouter)
 
 app.use('*', (req, res, next) => {
     console.log('made it to *')
-    // req.session ? () => console.log('yay') : res.redirect('/signin')
     if (req.session){
         console.log('yay')
     }
@@ -44,6 +43,10 @@ app.use('*', (req, res, next) => {
     // req.session.user ? next() : res.redirect('/signin')
 })
 
+const usersRouter = require('./routes/users');
+const tripsRouter = require('./routes/trips');
+app.use('/users', usersRouter);
+app.use('/trips', tripsRouter);
 
 app.use('/', (req, res) => {
     console.log('sending to index')
@@ -52,20 +55,6 @@ app.use('/', (req, res) => {
 
 })
 app.use('*', (res => res.json({'message': '404: Page does not exist'})))
-
-
-
-
-
-const usersRouter = require('./routes/users');
-const tripsRouter = require('./routes/trips');
-
-
-
-app.use('/users', usersRouter);
-app.use('/trips', tripsRouter);
-
-
 
 
 app.listen(port, () => {
