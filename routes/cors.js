@@ -4,7 +4,7 @@ const corsRouter = express.Router();
 
 const {
     handleRequest,
-} = require('../controllers/trips');
+} = require('../controllers/cors');
 
 corsRouter.post('*', handleRequest);
 
