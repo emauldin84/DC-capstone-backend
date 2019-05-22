@@ -17,7 +17,7 @@ app.use(session( {
     secret: process.env.SECRET
 }
 ));
-
+app.use(express.json()); // Required for passing JSON to `req.body`
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
 const es6Renderer = require('express-es6-template-engine');
