@@ -12,9 +12,11 @@ async function checkPassword(req, res) {
     if (isPasswordTrue) {
         req.session.user = theUser
         req.session.save()
-        res.redirect('/')
+        res.json(theUser);
+        // res.redirect('/')
     }else{
-        res.redirect('/signin')
+        res.send(status(401));
+        // res.redirect('/signin')
     }
 }
 
