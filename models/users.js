@@ -16,6 +16,23 @@ class User {
         `)
     }
 
+    static emailAlreadyExists(email){
+        return db.any(`
+        SELECT * FROM users
+        WHERE email=$1
+        `, [email]).then(data => {
+            // For whatever reason, you can't return from this function within the IF/ELSE?
+            let boolVal = false;
+            if (data.length > 0){
+                boolVal = true;
+            }
+            else{
+                boolVal = false;
+            }
+            return boolVal;
+        });
+    }
+
     static getUserById(userId) {
         console.log(`User ID: ${userId}`)
         return db.one (`
@@ -36,7 +53,6 @@ class User {
     }
 
     static getUserByEmail(email) {
-        console.log(email)
         return db.one(`
         SELECT * FROM users
         WHERE email=$1
@@ -67,9 +83,9 @@ class User {
     }
 
     static addNewUser(first_name, last_name, email, user_password) {
-        return db.result(`
+        return db.one(`
         INSERT into users(first_name, last_name, email, user_password)
-        VALUES($1, $2, $3, $4)`, [first_name, last_name, email, user_password]
+        VALUES($1, $2, $3, $4) returning id`, [first_name, last_name, email, user_password]
         )
     }
 
