@@ -46,6 +46,8 @@ app.use('*', (req, res, next) => {
 
 const usersRouter = require('./routes/users');
 const tripsRouter = require('./routes/trips');
+const corsRouter = require('./routes/cors');
+app.use('/cors', corsRouter);
 app.use('/users', usersRouter);
 app.use('/trips', tripsRouter);
 
