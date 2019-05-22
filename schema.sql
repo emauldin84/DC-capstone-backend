@@ -16,3 +16,9 @@ create table trips (
     trip_photos varchar(2000),
     user_id integer references users(id)
 );
+
+create table photos (
+    id serial primary key,
+    trips_id integer references trips(id),
+    photo_url varchar(200)
+);
