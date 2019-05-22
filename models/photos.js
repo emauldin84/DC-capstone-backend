@@ -26,9 +26,9 @@ class Photos{
   }
 
   static addPhotoURL(id,url) {
-      return db.result(`INSERT into photos 
+      return db.one(`INSERT into photos 
       (trip_id, photo_url)
-      values ($1 , $2)` , [id, url])
+      values ($1 , $2) returning id` , [id, url])
 
   }
 

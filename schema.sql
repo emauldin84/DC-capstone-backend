@@ -19,6 +19,6 @@ create table trips (
 
 create table photos (
     id serial primary key,
-    trips_id integer references trips(id),
+    trip_id integer references trips(id),
     photo_url varchar(200)
 );
