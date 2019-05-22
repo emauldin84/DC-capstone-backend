@@ -9,6 +9,8 @@ const cors = require('cors');
 
 app.use(helmet());
 
+const fileUpload = require('express-fileupload');
+
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
@@ -26,6 +28,10 @@ app.set('views','views');
 app.set('view engine','html');
 
 app.use(express.static('public'))
+
+app.use(fileUpload(
+    {createParentPath:true}
+));
 
 app.use('/signin', signInRouter)
 
@@ -47,9 +53,11 @@ app.use('*', (req, res, next) => {
 const usersRouter = require('./routes/users');
 const tripsRouter = require('./routes/trips');
 const corsRouter = require('./routes/cors');
+const photosRouter = require('./routes/photos');
 app.use('/cors', corsRouter);
 app.use('/users', usersRouter);
 app.use('/trips', tripsRouter);
+app.use('/photos', photosRouter);
 
 app.use('/', (req, res) => {
     console.log('sending to index')
