@@ -60,12 +60,19 @@ class Trip {
         `)
     }
 
-    static addNewTrip(trip_location, trip_date, lat, lon, trip_details, trip_photos, user_id) {
-        return db.result(`
-        INSERT INTO trips (trip_location, trip_date, lat, lon, trip_details, trip_photos, user_id)
-        VALUES ($1, $2, $3, $4, $5, $6, $7)
-        `, [trip_location, trip_date, lat, lon, trip_details, trip_photos, user_id]
-        )
+    static updateTripPhotoURL(tripID, photoURL){
+        return db.any(`
+        UPDATE trips SET trip_photos=$2 where id = $1
+        `, [tripID, photoURL]);
+    }
+
+    static addNewTrip(trip_location, trip_date, lat, lon, trip_details, user_id) {
+        console.log(`Adding a trip to ${trip_location}`);
+        return db.one(`
+        INSERT INTO trips (trip_location, trip_date, lat, lon, trip_details, user_id)
+        VALUES ($1, $2, $3, $4, $5, $6) returning id
+        `, [trip_location, trip_date, lat, lon, trip_details, user_id]
+        );
     }
 
     static editTrip(location, date, lat, lon, details, photos, tripId) {

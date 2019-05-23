@@ -25,9 +25,8 @@ async function getTripsByUserId(req, res) {
 // grab user ID from req.session.userId to pass to new trip?
 async function addNewTrip(req, res) {
     console.log('USER ID', User.id)
-    let newTrip = await Trip.addNewTrip(req.body.trip_location, req.body.trip_date, req.body.lat, req.body.lon, req.body.trip_details, req.body.trip_photos, req.session.user.id)
-
-    res.send(newTrip)
+    let newTrip = await Trip.addNewTrip(req.body.location, req.body.date, req.body.lat, req.body.lon, req.body.details, req.session.user.id)
+    res.json({tripID : newTrip});
 }
 
 async function editTrip(req, res) {

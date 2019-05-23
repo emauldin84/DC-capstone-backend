@@ -1,4 +1,5 @@
 const Photos = require('../models/photos');
+const Trips = require('../models/trips');
 
 async function addPhotos (req, res) {
   //photo url will be passed as parameter in url from react
@@ -23,7 +24,8 @@ async function addPhotos (req, res) {
         return res.json({message:'error - No files were uploaded.'});
     }
     // save the data to the database
-    const {id} = await Photos.addPhotoURL(tripId,`photos/${fileName}`) ;
+    const {id} = await Photos.addPhotoURL(tripId,`${fileName}`) ;
+    await Trips.updateTripPhotoURL(tripId, fileName);
     res.json({message:"file uploaded succesfully", photoID: id});
   });
 }
