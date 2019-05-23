@@ -69,6 +69,7 @@ class Trip {
     }
 
     static editTrip(location, date, lat, lon, details, photos, tripId) {
+        console.log("tripId: ", tripId);
         return db.result(`
         UPDATE trips
         SET trip_location = $1, trip_date = $2, lat = $3, lon = $4, trip_details = $5, trip_photos = $6

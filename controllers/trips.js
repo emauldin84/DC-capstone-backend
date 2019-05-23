@@ -31,11 +31,8 @@ async function addNewTrip(req, res) {
 }
 
 async function editTrip(req, res) {
-    const {id} = req.params;
-    console.log(req.params.id);
-    console.log(typeof req.params.id);
-    let editedTrip = await Trip.editTrip(req.body.trip_location, req.body.trip_date, req.body.lat, req.body.lon, id);
-    res.send(editedTrip);
+    let editedTrip = await Trip.editTrip(req.body.trip_location, req.body.trip_date, req.body.lat, req.body.lon, req.body.trip_details, req.body.trip_photos, req.params.id);
+    res.json({destination : editedTrip});
 }
 
 async function deleteTrip(req, res) {
