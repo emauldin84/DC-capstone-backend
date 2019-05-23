@@ -17,7 +17,7 @@ async function addPhotos (req, res) {
   const randomNumber = Math.floor(Math.random() * Math.floor(1000)) // gets random number, 0 - 1000
   tripId ? tripId = tripId : tripId = randomNumber;
   // let fileName = tripId.toString() + Date.now().toString() + sampleFile.name;
-  let fileName = `${sampleFile.name.split('.')[0]}_${tripId}${Date.now()}.${sampleFile.name.split('.')[1]}`;
+  let fileName = `${tripId}_${sampleFile.name.split('.')[0]}_${Date.now()}.${sampleFile.name.split('.')[1]}`;
   sampleFile.mv(`./public/photos/${fileName}`, async function(err) {
     if (err) {
         return res.json({message:'error - No files were uploaded.'});
