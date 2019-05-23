@@ -60,6 +60,12 @@ class Trip {
         `)
     }
 
+    static updateTripPhotoURL(tripID, photoURL){
+        return db.any(`
+        UPDATE trips SET trip_photos=$2 where id = $1
+        `, [tripID, photoURL]);
+    }
+
     static addNewTrip(trip_location, trip_date, lat, lon, trip_details, user_id) {
         console.log(`Adding a trip to ${trip_location}`);
         return db.one(`
