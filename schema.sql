@@ -4,7 +4,7 @@ create table users (
     last_name varchar(200),
     email varchar(100),
     user_password varchar(200),
-    profile_url VARCHAR(200)
+    photo_url VARCHAR(200)
 );
 
 create table trips (
