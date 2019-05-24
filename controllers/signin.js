@@ -37,8 +37,17 @@ async function signUp(req, res) {
     }
 }
 
+function signOut(req, res) {
+    // destroy session
+    console.log(req.session);
+    req.session.destroy();
+    console.log(req.session);
+    res.render('index');
+}
+
 
 module.exports = {
     checkPassword,
     signUp,
+    signOut,
 };

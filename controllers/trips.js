@@ -15,7 +15,7 @@ async function getTripById(req, res) {
 }
 
 async function getTripsByUserId(req, res) {
-    
+    console.log("About to break");
     const tripsArray = await Trip.getTripsByUserId(req.session.user.id)
     // console.log(tripsArray);
 

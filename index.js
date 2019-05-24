@@ -5,6 +5,7 @@ const app = express();
 const port = process.env.PORT;
 const helmet = require('helmet');
 const signInRouter = require('./routes/signin')
+const signOutRouter = require('./routes/signout')
 const cors = require('cors');
 
 app.use(helmet());
@@ -54,6 +55,7 @@ const usersRouter = require('./routes/users');
 const tripsRouter = require('./routes/trips');
 const corsRouter = require('./routes/cors');
 const photosRouter = require('./routes/photos');
+app.use('/signout', signOutRouter);
 app.use('/cors', corsRouter);
 app.use('/users', usersRouter);
 app.use('/trips', tripsRouter);
