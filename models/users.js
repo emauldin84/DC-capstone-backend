@@ -2,12 +2,13 @@ const db = require('./conn');
 const bcrypt = require('bcryptjs')
 
 class User {
-    constructor(id, first_name, last_name, email, user_password) {
+    constructor(id, first_name, last_name, email, user_password,photo_url ) {
         this.id = id;
         this.firstName = first_name;
         this.lastName = last_name;
         this.email = email;
         this.userPassword = user_password;
+        this.photoURL = photo_url;
     }
 
     static getAllUsers() {
@@ -45,7 +46,8 @@ class User {
                 userData.first_name, 
                 userData.last_name, 
                 userData.email, 
-                userData.user_password
+                userData.user_password,
+                userData.photo_url
                 )
             return userInstance;
         })
@@ -64,7 +66,8 @@ class User {
                 userData.first_name, 
                 userData.last_name, 
                 userData.email, 
-                userData.user_password
+                userData.user_password,
+                userData.photo_url
                 )
             return userInstance;
         })
@@ -76,9 +79,10 @@ class User {
         return db.result(`
         UPDATE users SET 
             email = '${this.email}',
-            password = '${this.user_password}',
-            first_name = '${this.first_name}',
-            last_name = '${this.last_name}'
+            password = '${this.userPassword}',
+            first_name = '${this.firstName}',
+            last_name = '${this.lastName}',
+            photo_url = '${this.photoURL}',
             where id = ${this.id}`);
     }
 

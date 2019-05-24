@@ -3,7 +3,8 @@ create table users (
     first_name varchar(200),
     last_name varchar(200),
     email varchar(100),
-    user_password varchar(200)
+    user_password varchar(200),
+    profile_url VARCHAR(200)
 );
 
 create table trips (
