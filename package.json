@@ -25,6 +25,8 @@
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
+    "encodeurl": "^1.0.2",
+    "escape-html": "^1.0.3",
     "express": "^4.17.0",
     "express-es6-template-engine": "^2.1.9",
     "express-fileupload": "^1.1.4",
