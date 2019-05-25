@@ -87,7 +87,6 @@ class User {
     }
 
     static updateUserByID(id, {firstName, lastName, email, photoURL}) {
-        photoURL = 'banana'
         return db.any(`
         UPDATE users SET
             email = $3,
@@ -97,6 +96,16 @@ class User {
             where id = $5
         `, [firstName, lastName, email, photoURL, id]
         );
+    }
+
+    static updateUserPasswordByID (id, password) {
+        return db.any(`
+        UPDATE users SET
+            user_password = $1
+            where id = $2
+        `, [password, id]
+        );
+
     }
 
     static addNewUser(first_name, last_name, email, user_password) {

@@ -41,7 +41,10 @@ async function getUserById(req, res) {
     res.json({user});
 }
 
-// async function checkUserLogin
+async function updatePassworByID(req, res) {
+    const newPassword = User.hashPassword(req.body.password);
+    await User.updateUserPasswordByID(req.session.user.id, newPassword);
+}
 
 
 module.exports = {
@@ -50,4 +53,5 @@ module.exports = {
     getUserByEmail,
     getUserById,
     updateUserByID,
+    updatePassworByID,
 }
