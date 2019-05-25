@@ -86,11 +86,24 @@ class User {
             where id = ${this.id}`);
     }
 
+    static updateUserByID(id, {firstName, lastName, email, photoURL}) {
+        photoURL = 'banana'
+        return db.any(`
+        UPDATE users SET
+            email = $3,
+            first_name = $1,
+            last_name = $2,
+            photo_url = $4
+            where id = $5
+        `, [firstName, lastName, email, photoURL, id]
+        );
+    }
+
     static addNewUser(first_name, last_name, email, user_password) {
         return db.one(`
         INSERT into users(first_name, last_name, email, user_password)
         VALUES($1, $2, $3, $4) returning id`, [first_name, last_name, email, user_password]
-        )
+        );
     }
 
     setPassword(password) {

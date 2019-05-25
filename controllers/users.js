@@ -31,10 +31,14 @@ async function getUserByEmail(req, res) {
     res.send(userInstance)
 }
 
-async function getUserById(req, res) {
-    const userInstance = await User.getUserById(req.session.id)
+async function updateUserByID(req, res) {
+    await User.updateUserByID(req.session.user.id, req.body);
+    res.json({message:"success"});
+}
 
-    res.send(userInstance)
+async function getUserById(req, res) {
+    const user = await User.getUserById(req.session.user.id);
+    res.json({user});
 }
 
 // async function checkUserLogin
@@ -45,4 +49,5 @@ module.exports = {
     addNewUser,
     getUserByEmail,
     getUserById,
+    updateUserByID,
 }
