@@ -50,7 +50,9 @@ async function sessionCheck(req, res) {
         const user = await User.getUserById(req.session.user.id)
         res.json({user});
     }
-    return res.json({user:{}});
+    else{
+        res.json({user:{}});
+    }
 }
 
 

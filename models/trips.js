@@ -33,7 +33,6 @@ class Trip {
         .catch(err => err)
     }
     static getTripsByUserId(user_id) {
-        console.log("About to break!");
         return db.any(`
         SELECT * from trips
         WHERE user_id = ${user_id};

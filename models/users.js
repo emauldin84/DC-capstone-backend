@@ -35,11 +35,11 @@ class User {
     }
 
     static getUserById(userId) {
-        console.log(`User ID: ${userId}`)
         return db.one (`
         SELECT * from users
-        WHERE id=${userId}
-        `)
+        WHERE id= $1
+        `, [userId])
+        .catch(err => console.log(err))
         .then(userData => {
             const userInstance = new User (
                 userData.id, 
@@ -50,8 +50,7 @@ class User {
                 userData.photo_url
                 )
             return userInstance;
-        })
-        .catch(err => err)
+        });
     }
 
     static getUserByEmail(email) {
