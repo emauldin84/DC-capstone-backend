@@ -56,6 +56,13 @@ async function newProfilePhoto (req, res) {
   });
 }
 
+async function undoProfilePhoto(req, res){
+  const fileName = req.body.url;
+  console.log(fileName);
+  const newPic = await User.updateUserPhoto(req.session.user.id, fileName);
+  res.json({newPic});
+}
+
 async function getUserPhotos(req, res){
 
 }
@@ -64,4 +71,5 @@ async function getUserPhotos(req, res){
     addPhotos,
     getUserPhotos,
     newProfilePhoto,
+    undoProfilePhoto,
 };
