@@ -35,11 +35,11 @@ class User {
     }
 
     static getUserById(userId) {
-        console.log(`User ID: ${userId}`)
         return db.one (`
         SELECT * from users
-        WHERE id=${userId}
-        `)
+        WHERE id= $1
+        `, [userId])
+        .catch(err => console.log(err))
         .then(userData => {
             const userInstance = new User (
                 userData.id, 
@@ -50,8 +50,7 @@ class User {
                 userData.photo_url
                 )
             return userInstance;
-        })
-        .catch(err => err)
+        });
     }
 
     static getUserByEmail(email) {
@@ -87,7 +86,6 @@ class User {
     }
 
     static updateUserByID(id, {firstName, lastName, email, photoURL}) {
-        photoURL = 'banana'
         return db.any(`
         UPDATE users SET
             email = $3,
@@ -97,6 +95,16 @@ class User {
             where id = $5
         `, [firstName, lastName, email, photoURL, id]
         );
+    }
+
+    static updateUserPasswordByID (id, password) {
+        return db.any(`
+        UPDATE users SET
+            user_password = $1
+            where id = $2
+        `, [password, id]
+        );
+
     }
 
     static addNewUser(first_name, last_name, email, user_password) {

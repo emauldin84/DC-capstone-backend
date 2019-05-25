@@ -8,6 +8,7 @@ const {
     getUserByEmail,
     getUserById,
     updateUserByID,
+    updatePassworByID
 } = require('../controllers/users');
 
 usersRouter.get('/allusers', getAllUsers);
@@ -15,6 +16,7 @@ usersRouter.get('/email/:email', getUserByEmail);
 // usersRouter.get('/id/:id', getUserById);
 usersRouter.get('/', getUserById);
 usersRouter.post('/', updateUserByID);
+usersRouter.post('/password', updatePassworByID);
 usersRouter.post('/register', addNewUser);
 
 module.exports = usersRouter;
