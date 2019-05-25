@@ -45,9 +45,18 @@ function signOut(req, res) {
     res.render('index');
 }
 
+async function sessionCheck(req, res) {
+    if(req.session.id){
+        const user = await User.getUserById(req.session.user.id)
+        res.json({user});
+    }
+    return res.json({user:{}});
+}
+
 
 module.exports = {
     checkPassword,
     signUp,
     signOut,
+    sessionCheck,
 };

@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT;
 const helmet = require('helmet');
+const sessionRouter = require('./routes/session')
 const signInRouter = require('./routes/signin')
 const signOutRouter = require('./routes/signout')
 const cors = require('cors');
@@ -35,21 +36,30 @@ app.use(fileUpload(
 ));
 
 app.use('/signin', signInRouter)
+app.use('/session', sessionRouter)
 
-app.use('*', (req, res, next) => {
-    console.log('made it to *')
-    if (req.session){
-        console.log('yay')
-    }
-    else{
-        console.log('nooo')
-        // res.redirect('/signin')
-    }
-    console.log(req.path);
-    next();
-    // req.session ? () => console.log('yay') : () => console.log('nooo')
-    // req.session.user ? next() : res.redirect('/signin')
-})
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // 
+// // Below is a piece of middleware no longer necessary as we have React keeping 
+// // track of login credentials in the LandingPage component. This is being replaced
+// // by a router that will get hit with a request from the frontend when the page is
+// // loaded for the first time / refreshed. That will ultimately check if there is a
+// // session already and, if so, will automatically pass back the user's info.
+//
+// app.use('*', (req, res, next) => {
+//     console.log('made it to *')
+//     if (req.session){
+//         console.log('yay')
+//     }
+//     else{
+//         console.log('nooo')
+//         // res.redirect('/signin')
+//     }
+//     console.log(req.path);
+//     next();
+//     // req.session ? () => console.log('yay') : () => console.log('nooo')
+//     // req.session.user ? next() : res.redirect('/signin')
+// })
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // 
 
 const usersRouter = require('./routes/users');
 const tripsRouter = require('./routes/trips');
