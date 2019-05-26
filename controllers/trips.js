@@ -1,30 +1,22 @@
-const Trip = require('../models/trips')
-const User = require('../models/users')
+const Trip = require('../models/trips');
+const User = require('../models/users');
 
 async function getAllTrips(req, res) {
-    const tripsArray = await Trip.getAllTrips()
-
-    res.send(tripsArray)
+    const tripsArray = await Trip.getAllTrips();
+    res.send(tripsArray);
 }
 
 async function getTripById(req, res) {
-    console.log(req.params)
-    const tripInstance = await Trip.getTripById(req.params.id)
-
+    const tripInstance = await Trip.getTripById(req.params.id);
     res.send(tripInstance);
 }
 
 async function getTripsByUserId(req, res) {
-    console.log("About to break");
-    const tripsArray = await Trip.getTripsByUserId(req.session.user.id)
-    // console.log(tripsArray);
-
+    const tripsArray = await Trip.getTripsByUserId(req.session.user.id);
     res.json(tripsArray);
 }
 
-// grab user ID from req.session.userId to pass to new trip?
 async function addNewTrip(req, res) {
-    console.log('USER ID', User.id)
     let newTrip = await Trip.addNewTrip(req.body.location, req.body.date, req.body.lat, req.body.lon, req.body.details, req.session.user.id)
     res.json({tripID : newTrip});
 }
@@ -35,9 +27,8 @@ async function editTrip(req, res) {
 }
 
 async function deleteTrip(req, res) {
-    let deletedTrip = await Trip.deleteTrip(req.params.id)
-
-    res.send(req.params.id)
+    let deletedTrip = await Trip.deleteTrip(req.params.id);
+    res.send(req.params.id);
 }
 
 
@@ -48,4 +39,4 @@ module.exports = {
     editTrip,
     deleteTrip,
     getTripsByUserId,
-}
+};
