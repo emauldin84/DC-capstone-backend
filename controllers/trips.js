@@ -28,7 +28,9 @@ async function editTrip(req, res) {
 
 async function deleteTrip(req, res) {
     let deletedTrip = await Trip.deleteTrip(req.params.id);
-    res.send(req.params.id);
+    console.log("Deleted trip: ");
+    console.log(deletedTrip);
+    res.json({message:"successfully deleted trip"});
 }
 
 

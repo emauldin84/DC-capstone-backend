@@ -16,6 +16,6 @@ tripsRouter.get('/trip/:id', getTripById);
 tripsRouter.get('/', getTripsByUserId);
 tripsRouter.post('/add', addNewTrip);
 tripsRouter.post('/edit/:id', editTrip);
-tripsRouter.post('/delete/:id', deleteTrip);
+tripsRouter.delete('/delete/:id', deleteTrip);
 
 module.exports = tripsRouter;
