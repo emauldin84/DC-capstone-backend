@@ -6,7 +6,7 @@ const {
 } = require('../controllers/signin');
 
 sessionRouter.get('*', (req, res) => {
-  console.log("Signing out...");
+  console.log("Checking user's session");
   sessionCheck(req, res);
 });
 
