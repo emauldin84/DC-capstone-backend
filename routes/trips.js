@@ -13,7 +13,7 @@ const {
 } = require('../controllers/trips');
 
 tripsRouter.get('/alltrips', getAllTrips);
-tripsRouter.get('/trip/:id', getTripById);
+tripsRouter.get('/:id', getTripById);
 tripsRouter.get('/', getTripsByUserId);
 tripsRouter.get('/photos/:id', getTripPhotos);
 tripsRouter.post('/add', addNewTrip);
