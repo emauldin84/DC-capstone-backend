@@ -33,6 +33,8 @@ async function signUp(req, res) {
     else{
         const {id} = await User.addNewUser(firstName, lastName, email, password);
         const newUser = await User.getUserById(id);
+        req.session.user = newUser;
+        req.session.save();
         res.json(newUser);
     }
 }

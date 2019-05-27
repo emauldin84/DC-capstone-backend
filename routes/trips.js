@@ -8,14 +8,16 @@ const {
     addNewTrip,
     editTrip,
     deleteTrip,
-    getTripsByUserId
+    getTripsByUserId,
+    getTripPhotos,
 } = require('../controllers/trips');
 
 tripsRouter.get('/alltrips', getAllTrips);
 tripsRouter.get('/trip/:id', getTripById);
 tripsRouter.get('/', getTripsByUserId);
+tripsRouter.get('/photos/:id', getTripPhotos);
 tripsRouter.post('/add', addNewTrip);
 tripsRouter.post('/edit/:id', editTrip);
-tripsRouter.post('/delete/:id', deleteTrip);
+tripsRouter.delete('/delete/:id', deleteTrip);
 
 module.exports = tripsRouter;

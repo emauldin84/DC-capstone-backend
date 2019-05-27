@@ -1,5 +1,6 @@
 const Trip = require('../models/trips');
 const User = require('../models/users');
+const Photo = require('../models/photos');
 
 async function getAllTrips(req, res) {
     const tripsArray = await Trip.getAllTrips();
@@ -28,9 +29,16 @@ async function editTrip(req, res) {
 
 async function deleteTrip(req, res) {
     let deletedTrip = await Trip.deleteTrip(req.params.id);
-    res.send(req.params.id);
+    console.log("Deleted trip: ");
+    console.log(deletedTrip);
+    res.json({message:"successfully deleted trip"});
 }
 
+async function getTripPhotos(req, res){
+    let {id} = req.params;
+    let imgs = await Photo.getPhotoURLs(id);
+    res.json({imgs});
+}
 
 module.exports = {
     getAllTrips,
@@ -39,4 +47,5 @@ module.exports = {
     editTrip,
     deleteTrip,
     getTripsByUserId,
+    getTripPhotos,
 };
