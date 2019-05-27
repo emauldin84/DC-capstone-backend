@@ -27,7 +27,8 @@ async function addPhotos (req, res) {
     // save the data to the database
     const {id} = await Photos.addPhotoURL(tripId,`${fileName}`) ;
     await Trips.updateTripPhotoURL(tripId, fileName);
-    res.json({message:"file uploaded succesfully", photoID: id});
+    const {photo_url} = await Photos.getPhotoByID(id);
+    res.json({message:"file uploaded succesfully", photoID: id, photo_url,});
   });
 }
 

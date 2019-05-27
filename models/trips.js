@@ -18,7 +18,7 @@ class Trip {
         WHERE id = ${tripId};
         `)
         .then(trip => {
-            const tripInstance = new Trip(
+            return( new Trip(
                 trip.id,
                 trip.trip_location,
                 trip.trip_date,
@@ -27,8 +27,7 @@ class Trip {
                 trip.trip_details,
                 trip.trip_photos,
                 trip.user_id,
-            )
-            return tripInstance;
+            ));
         })
         .catch(err => err)
     }
@@ -38,16 +37,18 @@ class Trip {
         WHERE user_id = ${user_id};
         `)
         .then(tripsData => {
-            const tripArray = tripsData.map(trip => new Trip(
-                trip.id,
-                trip.trip_location,
-                trip.trip_date,
-                trip.lat,
-                trip.lon,
-                trip.trip_details,
-                trip.trip_photos,
-                trip.user_id,
-            ))
+            const tripArray = tripsData.map(trip => {
+                return( new Trip(
+                    trip.id,
+                    trip.trip_location,
+                    trip.trip_date,
+                    trip.lat,
+                    trip.lon,
+                    trip.trip_details,
+                    trip.trip_photos,
+                    trip.user_id,
+                ));
+            });
             return tripArray;
         })
         .catch(err => err)

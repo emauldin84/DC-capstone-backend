@@ -8,21 +8,27 @@ class Photos{
   }
 
   static getPhotoURLs(id) {
+      console.log("id,", id);
       console.log("getPhotoURL from model is working")
-      return db.any(`SELECT * from photos WHERE trip_id=${id}`)
-          .then((urls) => {
-              const urlArray = [];
-              urls.map(url => {
-                  const aUrl = new Photos(url.id, url.trip_id, url.photo_url)
-                  urlArray.push(aUrl);
-              })
-              console.log("models photos",urlArray)
-              return urlArray;
-          })     
-          .catch((error) => {
-              console.log(error);
-              return null
-          })
+      return db.any(`SELECT * from photos WHERE trip_id=$1`, [id]);
+        //   .then((urls) => {
+        //       const urlArray = [];
+        //       urls.map(url => {
+        //           const aUrl = new Photos(url.id, url.trip_id, url.photo_url)
+        //           urlArray.push(aUrl);
+        //       })
+        //       console.log("models photos",urlArray)
+        //       return urlArray;
+        //   })     
+        //   .catch((error) => {
+        //       console.log(error);
+        //       return null
+        //   })
+  }
+  static getPhotoByID(id){
+      return db.one(`
+      SELECT * from photos where id=$1
+      `, [id]);
   }
 
   static addPhotoURL(id,url) {

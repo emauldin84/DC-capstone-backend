@@ -32,6 +32,7 @@
     "express-fileupload": "^1.1.4",
     "express-session": "^1.16.1",
     "helmet": "^3.18.0",
+    "moment": "^2.24.0",
     "pg-promise": "^8.7.2",
     "session-file-store": "^1.2.0"
   },
