@@ -24,11 +24,21 @@ class Photos{
         values ($1 , $2) returning id` , [id, url]);
     }
 
-    deleteURL(id) {
-        db.result(`DELETE from photos where id = $1`, [id])
-        .catch((error) => {
-            console.error(error);
-        });
-    }
+
+
+  deleteURL(id) {
+      db.result(`DELETE from photos where id = $1`, [id])
+      .catch((error) => {
+          console.error(error);
+      })
+  }
+
+  static deletePhotoByTripId(tripId) {
+      db.result(`DELETE from photos where trip_id = $1`, [tripId])
+      .catch((error) => {
+        console.error(error);
+    })
+  }
+
 }
 module.exports = Photos;
