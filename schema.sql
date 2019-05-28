@@ -14,7 +14,8 @@ create table trips (
     lat varchar(100),
     lon varchar(100),
     trip_details text,
-    trip_photos varchar(2000),
+    -- trip_photos varchar(2000),
+    trip_photos TEXT [],
     user_id integer references users(id)
 );
 
