@@ -8,8 +8,8 @@ async function getAllTrips(req, res) {
 }
 
 async function getTripById(req, res) {
-    const tripInstance = await Trip.getTripById(req.params.id);
-    res.send(tripInstance);
+    const clickedTrip = await Trip.getTripById(req.params.id);
+    res.json({clickedTrip});
 }
 
 async function getTripsByUserId(req, res) {

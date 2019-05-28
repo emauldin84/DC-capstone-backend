@@ -61,10 +61,21 @@ class Trip {
         `)
     }
 
-    static updateTripPhotoURL(tripID, photoURL){
-        return db.any(`
-        UPDATE trips SET trip_photos=$2 where id = $1
-        `, [tripID, photoURL]);
+    static updateTripPhotoURL(tripID, photoUrlArray){
+        return db.one(`
+            SELECT trip_photos from trips where id=$1
+        `,[tripID])
+        .then(({trip_photos}) => trip_photos)
+        .then((dbPhotos) => {
+            let updatedList;
+            if(!dbPhotos){
+                updatedList = [...photoUrlArray];
+            }
+            else{updatedList = [...dbPhotos, ...photoUrlArray];}
+            return db.any(`
+            UPDATE trips SET trip_photos=$2 where id = $1 returning trip_photos
+            `, [tripID, updatedList])
+        });
     }
 
     static addNewTrip(trip_location, trip_date, lat, lon, trip_details, user_id) {
