@@ -61,7 +61,7 @@ class Trip {
         `)
     }
 
-    static updateTripPhotoURL(tripID, photoUrlArray){
+    static addTripPhotoURL(tripID, photoUrlArray){
         return db.one(`
             SELECT trip_photos from trips where id=$1
         `,[tripID])
@@ -74,7 +74,19 @@ class Trip {
             else{updatedList = [...dbPhotos, ...photoUrlArray];}
             return db.any(`
             UPDATE trips SET trip_photos=$2 where id = $1 returning trip_photos
-            `, [tripID, updatedList])
+            `, [tripID, updatedList]);
+        });
+    }
+    static removeTripPhotoURL(tripID, offendingURL){
+        return db.one(`
+            SELECT trip_photos from trips where id=$1
+        `,[tripID])
+        .then(({trip_photos}) => trip_photos)
+        .then(dbPhotos => {
+            const photoUrlArray = dbPhotos.filter(url => url!==offendingURL);
+            return db.any(`
+            UPDATE trips SET trip_photos=$2 where id = $1 returning trip_photos
+            `, [tripID, photoUrlArray]);
         });
     }
 

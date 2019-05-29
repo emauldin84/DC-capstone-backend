@@ -7,6 +7,10 @@ class Photos{
         this.photoURL = photo_url;
     }
 
+    static getPhotoByURL(url) {
+        console.log("url,", url);
+        return db.one(`SELECT * from photos WHERE photo_url=$1`, [url]);
+    }
     static getPhotoURLs(id) {
         console.log("id,", id);
         console.log("getPhotoURL from model is working")
@@ -26,19 +30,26 @@ class Photos{
 
 
 
-  deleteURL(id) {
-      db.result(`DELETE from photos where id = $1`, [id])
-      .catch((error) => {
-          console.error(error);
-      })
-  }
+    static deleteURL(id) {
+        db.result(`DELETE from photos where id = $1`, [id])
+        .catch((error) => {
+            console.error(error);
+        })
+    }
 
-  static deletePhotoByTripId(tripId) {
-      db.result(`DELETE from photos where trip_id = $1`, [tripId])
-      .catch((error) => {
-        console.error(error);
-    })
-  }
+    static deletePhotoByTripId(tripId) {
+        db.result(`DELETE from photos where trip_id = $1`, [tripId])
+        .catch((error) => {
+            console.error(error);
+        })
+    }
+
+    static deletePhotoByURL(url) {
+        db.result(`DELETE from photos where photo_url = $1`, [url])
+        .catch((error) => {
+            console.error(error);
+        });
+    }
 
 }
 module.exports = Photos;

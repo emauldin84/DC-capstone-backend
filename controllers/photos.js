@@ -30,7 +30,7 @@ async function addPhotos (req, res) {
   });
 
   // Update the trips table in DB with the latest photo names
-  const response = await Trips.updateTripPhotoURL(tripId, fileNames);
+  const response = await Trips.addTripPhotoURL(tripId, fileNames);
   const {trip_photos} = response[0];
 
   res.json({message:"file uploaded succesfully", trip_photos});
@@ -69,7 +69,23 @@ async function undoProfilePhoto(req, res){
 }
 
 async function getUserPhotos(req, res){
+  
+}
 
+async function deletePhotoByURL(req, res){
+  let {deleteMe, tripId, } = req.params;
+  tripId = parseInt(tripId)
+  // filter the trip_photos 
+  // let {trip_photos} = await Trips.getTripById(tripId);
+  // console.log("before: ", trip_photos);
+  // const filteredPhotos = trip_photos.filter(photoURL => photoURL!==deleteMe);
+  // console.log("after: ", filteredPhotos);
+  // update the trip with the filtered photos
+  console.log("tripId: ",tripId);
+  const photos = await Trips.removeTripPhotoURL(tripId, deleteMe);
+  console.log(photos);
+  await Photos.deletePhotoByURL(deleteMe);
+  res.json({photos : photos[0].trip_photos});
 }
 
   module.exports = {
@@ -77,4 +93,5 @@ async function getUserPhotos(req, res){
     getUserPhotos,
     newProfilePhoto,
     undoProfilePhoto,
+    deletePhotoByURL,
 };
