@@ -51,7 +51,7 @@ async function sessionCheck(req, res) {
     if(!req.session){
         console.log("controllers/signin, func(sessionCheck), you could have just used 'req.session'");
     }
-    if(req.session.id){
+    if(req.session && req.session.user && req.session.user.id){
         const user = await User.getUserById(req.session.user.id);
         res.json({user});
     }
