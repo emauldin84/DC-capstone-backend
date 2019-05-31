@@ -1,4 +1,5 @@
-# Flamingo: Jonathan, Eric
+# Flamingo 
+## By Jonathan Ray & Eric Mauldin
 
 ## Full-Stack Capstone Project
 
@@ -42,7 +43,6 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
 ## User Profile
 ![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.26.59%20PM.png?raw=true)
 
-
 ## Sign in simulation
 <img src="https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/flaming_signin.gif?raw=true" title="Sign In demo" width="100%"/></img>
 
@@ -71,22 +71,27 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
 
 
 #### Challenges
-- Challenge #1: Constructing a database architecture using PostgreSQL that we could then build functionality around.
-  - Solution: Organized data into 5 tables (users, customers, items, locations, purchases) that represents the real world information.
+- Challenge #1: 
+  Directly manipulate the dom within React lifecycle methods.
   
-- Challenge #2: Allowing the user to securely add a single item and visualize it on the dashboard
-  - Solution: Using forms, looked for post requests that allowed the user to dynamically manipulate tables in the database. This involved creation of the proper routes, controllers, and models in traditional MVC fashion.
+- Solution: 
+  In order to implement the datepicker and photo carousel provided by Materialize, an approach outside of React was needed.  Understanding of React lifecycle methods led us to employ a myriad of techniques to ensure that the site ran smoothly while two incongruent approaches dynamically displayed the datepicker and image carousel viewer.
   
-- Challenge #3: Allowing the user to visualize inventory outflows of the items they want to test, using a selected number of days and customers.
-  - Solution: Scaled existing functions to work for user entered data and added new functionality that allows the tables to scale appropriately
-
-- Challenge #4: Showing the user how their inventory would change incrementally over time without refreshing the entire page for each increment
-  - Solution: Used client-side JavaScript once the database was changed to visualize the day-to-day changes, without having to query the database again.
-
-- Challenge #5: Understand and implement GitHub OAuth for user login. 
-  - Solution: Have OAuth work beside standard login procedures without interferance or overlap.
   
-
+- Challenge #2:
+  Dynamically store trip data input by the user in the backend and serve automatically.
+  
+- Solution:
+  Update React state input on change and store the new values in the backend on window close. New values will then be served on component remount
+  
+  
+- Challenge #3:
+  Providing responsive `undo` actions to the user
+  
+- Solution:
+  Utilized onclick events to editable fields that, in turn, fire a css class change to display an undo tooltip feature to safe guard against unwanted changes.
+   
+    
 #### MVP
 A user can add, edit and delete trips that will display on a responsive map/push pin interface.
 
@@ -97,6 +102,6 @@ A user can add, edit and delete trips that will display on a responsive map/push
 - Add flight information for trips and connect map pins based on connections
 
 #### Authors
-- [Jonathan Ray] (https://github.com/ray-jonathan)
+- [Jonathan Ray](https://github.com/ray-jonathan)
 - [Eric Mauldin](https://github.com/emauldin84)
   
