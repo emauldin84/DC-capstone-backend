@@ -54,21 +54,25 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
 
 
 ## Day to day slider simulation visualization
-<img src="https://giant.gfycat.com/IllinformedPoshHarpyeagle.gif" title="Slider Demo" width="1000"/></img>
+<img src="https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/flaming_signin.gif?raw=true" title="Sign In demo" width="80%"/></img>
 
 
 #### Technologies
+- React
 - Node.js
 - Express
 - PostgreSQL
 - JavaScript
 - HTML
-- CSS / Bootstrap
-- Mocha (TDD)
+- CSS / Materialize
+- Axios
+- bcrypt
+- Mapbox
+- Autosuggest
+- geocoding APIs
 - AWS
 - Nginx
-- Passport
-- OAuth
+
 
 #### Challenges
 - Challenge #1: Constructing a database architecture using PostgreSQL that we could then build functionality around.
@@ -88,16 +92,15 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
   
 
 #### MVP
-A user can add items and visualize inventory outflows for one item in their inventory over a fixed number of days.
+A user can add, edit and delete trips that will display on a responsive map/push pin interface.
 
 #### Reach Goals
-- Random simulation using all entered inventory √
-- Make an item more likely to be purchased than others √
-- Build a visualization of change over time √
-- Build inventory replenishment functionality 
+- Add two finger swipe to photo carousel
+- Set map zoom to relative dimensions of the map from page height/width
+- Change date column in PSQL to two columns to include trip start and end dates
+- Add flight information for trips and connect map pins based on connections
 
 #### Authors
-- [Anthony DiRusso](https://github.com/A-DiRusso)
-- [Eric Wittenberg](https://github.com/ebwittenberg)
+- [Jonathan Ray] (https://github.com/ray-jonathan)
 - [Eric Mauldin](https://github.com/emauldin84)
   
