@@ -54,7 +54,7 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
 
 
 ## Day to day slider simulation visualization
-<img src="https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/flaming_signin.gif?raw=true" title="Sign In demo" width="80%"/></img>
+<img src="https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/flaming_signin.gif?raw=true" title="Sign In demo" width="100%"/></img>
 
 
 #### Technologies
