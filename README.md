@@ -35,7 +35,7 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
 #### Screenshots
 
 ## Sign in page
-![alt-text](https://raw.githubusercontent.com/DC-captstone-backend/screenshots/Screen Shot 2019-05-31 at 2.24.41 PM.png)
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.24.41%20PM.png?raw=true)
 
 ## Login page
 ![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/login-page.png)
