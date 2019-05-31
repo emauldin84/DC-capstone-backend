@@ -35,7 +35,7 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
 #### Screenshots
 
 ## Sign in page
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/signup-page.png)
+![alt-text](screenshots/Screen Shot 2019-05-31 at 2.24.41 PM.png)
 
 ## Login page
 ![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/login-page.png)
