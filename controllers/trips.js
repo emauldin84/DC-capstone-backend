@@ -18,12 +18,12 @@ async function getTripsByUserId(req, res) {
 }
 
 async function addNewTrip(req, res) {
-    let newTrip = await Trip.addNewTrip(req.body.location, req.body.date, req.body.lat, req.body.lon, req.body.details, req.session.user.id)
+    let newTrip = await Trip.addNewTrip(req.body.location, req.body.date, req.body.lat, req.body.lon, req.body.details, req.session.user.id);
     res.json({tripID : newTrip});
 }
 
 async function editTrip(req, res) {
-    let editedTrip = await Trip.editTrip(req.body.trip_location, req.body.trip_date, req.body.lat, req.body.lon, req.body.trip_details, req.body.trip_photos, req.params.id);
+    let editedTrip = await Trip.editTrip(req.body.trip_location, req.body.trip_date, req.body.lat, req.body.lon, req.body.trip_details, req.params.id);
     res.json({destination : editedTrip});
 }
 
