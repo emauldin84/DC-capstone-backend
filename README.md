@@ -22,17 +22,7 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
 * Trip pins display different colors depending on whether their date is in the past or future.
 
 
-* Ability to register unique login for company employees
-* Add unique items or select prefilled options from categories like furniture.
-* Choose a specific item to simulate purchases over a selected time period
-* User can also generate a random simulation of all items in their inventory
-* Select number of customers per day
-* Increase a specific item's likelihood of purchase
-* Running simulation will show revenue earned, cost of outgoing stock, and profits for that time period
-* After the simulation has run, user can select specific day to visualize inventory amounts and purchase quantities for each item
-* Color coded simulated stock positions help visualize inventory outflows per day
-
-#### Screenshots
+#### Screenshots and Demo
 
 ## Sign in
 ![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.24.41%20PM.png?raw=true)
@@ -53,8 +43,14 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
 ![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.26.59%20PM.png?raw=true)
 
 
-## Day to day slider simulation visualization
+## Sign in simulation
 <img src="https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/flaming_signin.gif?raw=true" title="Sign In demo" width="100%"/></img>
+
+## Profile simulation
+<img src="https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/flamingo_profile.gif?raw=true" title="Sign In demo" width="100%"/></img>
+
+## Add Trip simulation
+<img src="https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/flamingo_addtrip.gif?raw=true" title="Add Trip demo" width="100%"/></img>
 
 
 #### Technologies
