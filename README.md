@@ -34,32 +34,24 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
 
 #### Screenshots
 
-## Sign in page
+## Sign in
 ![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.24.41%20PM.png?raw=true)
 
-## Login page
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/login-page.png)
+## Sign up
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.24.55%20PM.png?raw=true)
 
 ## Dashboard
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/preset-table.png)
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.25.27%20PM.png?raw=true)
 
-## Add Item
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/single-item-popup.png)
+## Add Trip
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.25.51%20PM.png?raw=true)
 
-## Single item simulation
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/one-item-sim.png)
+## Trip Details
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.26.13%20PM.png?raw=true)
 
-## Cash flows
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/cash-flow-visual.png)
+## User Profile
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.26.59%20PM.png?raw=true)
 
-## Increase likelihood of purchase
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/increase-likelihood.png)
-
-## Random simulation result final day
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/random-item-sim.png)
-
-## Random simulation result day 3
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/day-3-random-sim.png)
 
 ## Day to day slider simulation visualization
 <img src="https://giant.gfycat.com/IllinformedPoshHarpyeagle.gif" title="Slider Demo" width="1000"/></img>
