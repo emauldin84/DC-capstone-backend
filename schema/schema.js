@@ -14,15 +14,15 @@ const TripsType = new GraphQLObjectType({
         lat: {type: GraphQLString},
         lon: {type: GraphQLString},
         trip_details: {type: GraphQLString},
-        trip_photos: {type: GraphQLString},
+        // allows single field to return a array list
+        trip_photos: {type: new GraphQLList(GraphQLString)},
         users: {
             type: UsersType,
             resolve(parent, args){
                 return Users.getByID(parent.user_id)
             }
         }
-    }),
-    
+    })
 })
 
 const UsersType = new GraphQLObjectType({
@@ -55,21 +55,43 @@ const PhotosType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-        trips: {
+        trip: {
             type: TripsType,
-            args: {id: {type: GraphQLID}},
+            args: {
+                id: {type: GraphQLID},
+                user_id:{type: GraphQLID}
+        },
             resolve(parent, args){
-                const results = Trips.getByID(args.id)
-                console.log('results')
-                return results
+                if(args.id) {
+                    return Trips.getByID(args.id)
+                } else if (args.user_id) {
+                    return Trips.getTripsByUserId(args.user_id)
+                }
             
             } 
         },
-        users: {
-            type: UsersType,
-            args: {id: {type: GraphQLID}},
+        trips: {
+            // returns an array of objects
+            type: new GraphQLList(TripsType),
+            args: {
+                user_id:{type: GraphQLID}
+        },
             resolve(parent, args){
-                return Users.getByID(args.id)
+                return Trips.getTripsByUserId(args.user_id)
+                }
+        },
+        user: {
+            type: UsersType,
+            args: {
+                id: {type: GraphQLID},
+                email: {type: GraphQLString}
+            },
+            resolve(parent, args){
+                if(args.id){
+                    return Users.getByID(args.id)
+                } else if (args.email) {
+                    return Users.getUserByEmail(args.email)
+                }
             }
         },
         photos: {

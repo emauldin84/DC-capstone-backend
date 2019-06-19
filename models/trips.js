@@ -69,6 +69,7 @@ class Trip {
                     trip.user_id,
                 ));
             });
+            console.log('trips-array,', tripArray)
             return tripArray;
         })
         .catch(err => err)
