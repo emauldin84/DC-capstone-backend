@@ -1,7 +1,8 @@
 const graphql = require('graphql')
 const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull } = graphql
 
-const Trip = require('../models/trips')
+const Trips = require('../models/trips')
+const Users = require('../models/users')
 
 const TripsType = new GraphQLObjectType({
     name: 'Trips',
@@ -17,6 +18,18 @@ const TripsType = new GraphQLObjectType({
     })
 })
 
+const UsersType = new GraphQLObjectType({
+    name: 'Users',
+    fields:() => ({
+        id: {type: GraphQLID},
+        firstName: {type: GraphQLString},
+        lastName: {type: GraphQLString},
+        email: {type: GraphQLString},
+        userPassword: {type: GraphQLString},
+        photoURL: {type: GraphQLString},
+    })
+})
+
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
@@ -24,11 +37,18 @@ const RootQuery = new GraphQLObjectType({
             type: TripsType,
             args: {id: {type: GraphQLID}},
             resolve(parent, args){
-                const results = Trip.getByID(args.id)
+                const results = Trips.getByID(args.id)
                 console.log('results')
                 return results
             
             } 
+        },
+        users: {
+            type: UsersType,
+            args: {id: {type: GraphQLID}},
+            resolve(parent, args){
+                return Users.getByID(args.id)
+            }
         }
     }
 })

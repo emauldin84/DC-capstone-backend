@@ -53,6 +53,26 @@ class User {
         });
     }
 
+    static getByID(userId) {
+        return db.one (`
+        SELECT * from users
+        WHERE id= $1
+        `, [userId])
+        .catch(err => console.log(err))
+        .then(userData => {
+            const userInstance = new User (
+                userData.id, 
+                userData.first_name, 
+                userData.last_name, 
+                userData.email, 
+                userData.user_password,
+                userData.photo_url
+                )
+                console.log(userInstance)
+            return userInstance;
+        });
+    }
+
     static getUserByEmail(email) {
         return db.one(`
         SELECT * FROM users
