@@ -141,6 +141,26 @@ class User {
         VALUES($1, $2, $3, $4) returning id`, [first_name, last_name, email, user_password]
         );
     }
+    static addNewUserAndReturn(first_name, last_name, email, user_password) {
+        return db.one(`
+        INSERT into users(first_name, last_name, email, user_password)
+        VALUES($1, $2, $3, $4) returning *`, [first_name, last_name, email, user_password]
+        )
+        .then(userData => {
+            // console.log(userData);
+            const userInstance = new User (
+                userData.id, 
+                userData.first_name, 
+                userData.last_name, 
+                userData.email, 
+                userData.user_password,
+                userData.photo_url
+                )
+            return userInstance;
+        })
+        .catch(err => console.log((err)))
+
+    }
 
     setPassword(password) {
         this.password = bcrypt.hashSync(password, 10);  //10 is my salt

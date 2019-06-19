@@ -9,12 +9,12 @@ const TripsType = new GraphQLObjectType({
     name: 'Trips',
     fields:() => ({
         id: {type: GraphQLID},
-        trip_location: {type: GraphQLString}, 
+        trip_location: {type: GraphQLString},
         trip_date: {type: GraphQLString},
         lat: {type: GraphQLString},
         lon: {type: GraphQLString},
         trip_details: {type: GraphQLString},
-        // allows single field to return a array list
+        // allows single field to return an array list
         trip_photos: {type: new GraphQLList(GraphQLString)},
         users: {
             type: UsersType,
@@ -104,4 +104,28 @@ const RootQuery = new GraphQLObjectType({
     }
 })
 
-module.exports = new GraphQLSchema({query: RootQuery})
+const MutationQuery = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addUser: {
+            type: UsersType,
+            args: {
+                firstName: {type: new GraphQLNonNull(GraphQLString)},
+                lastName: {type: new GraphQLNonNull(GraphQLString)},
+                email: {type: new GraphQLNonNull(GraphQLString)},
+                userPassword: {type: new GraphQLNonNull(GraphQLString)},
+            },
+            resolve(parent, args){
+                const { firstName, lastName, email, userPassword } = args
+                let newUser = Users.addNewUserAndReturn(firstName, lastName, email, userPassword)
+                console.log('newUser', newUser)
+                return newUser
+            }
+        }
+    }
+})
+
+module.exports = new GraphQLSchema({
+    query: RootQuery,
+    mutation: MutationQuery
+})
