@@ -129,3 +129,21 @@ module.exports = new GraphQLSchema({
     query: RootQuery,
     mutation: MutationQuery
 })
+
+
+//######################################################
+//graphiql syntax for adding new user
+
+// mutation {
+//     addUser(
+//     firstName: "John",
+//     lastName: "Smith",
+//     email: "jsmith@email.com",
+//     userPassword: "password"
+//     ){
+//       firstName
+//       lastName
+//       email
+//       userPassword
+//     }
+//   }
