@@ -3,6 +3,7 @@ const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, 
 
 const Trips = require('../models/trips')
 const Users = require('../models/users')
+const Photos = require('../models/photos')
 
 const TripsType = new GraphQLObjectType({
     name: 'Trips',
@@ -14,8 +15,14 @@ const TripsType = new GraphQLObjectType({
         lon: {type: GraphQLString},
         trip_details: {type: GraphQLString},
         trip_photos: {type: GraphQLString},
-        user_id: {type: GraphQLID},
-    })
+        users: {
+            type: UsersType,
+            resolve(parent, args){
+                return Users.getByID(parent.user_id)
+            }
+        }
+    }),
+    
 })
 
 const UsersType = new GraphQLObjectType({
@@ -27,6 +34,21 @@ const UsersType = new GraphQLObjectType({
         email: {type: GraphQLString},
         userPassword: {type: GraphQLString},
         photoURL: {type: GraphQLString},
+    })
+})
+
+const PhotosType = new GraphQLObjectType({
+    name: 'Photos',
+    fields:() => ({
+        id: {type: GraphQLID},
+        tripID: {type: GraphQLID},
+        photoURL: {type: GraphQLString},
+        trip: {
+            type: TripsType,
+            resolve(parent, args){
+                return Trips.getByID(parent.tripID)
+            }
+        }
     })
 })
 
@@ -48,6 +70,13 @@ const RootQuery = new GraphQLObjectType({
             args: {id: {type: GraphQLID}},
             resolve(parent, args){
                 return Users.getByID(args.id)
+            }
+        },
+        photos: {
+            type: PhotosType,
+            args: {id: {type: GraphQLID}},
+            resolve(parent, args){
+                return Photos.getPhotoByID(args.id)
             }
         }
     }

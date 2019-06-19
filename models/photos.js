@@ -19,7 +19,16 @@ class Photos{
     static getPhotoByID(id){
         return db.one(`
         SELECT * from photos where id=$1
-        `, [id]);
+        `, [id])
+        .then(r => {
+            const photoData = new Photos(
+                r.id,
+                r.trip_id,
+                r.photo_url
+            )
+            console.log(photoData)
+            return photoData
+        })
     }
 
     static addPhotoURL(id,url) {
