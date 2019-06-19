@@ -8,6 +8,8 @@ const sessionRouter = require('./routes/session')
 const signInRouter = require('./routes/signin')
 const signOutRouter = require('./routes/signout')
 const cors = require('cors');
+const graphqlHTTP = require('express-graphql')
+const schema = require('./schema/schema')
 
 app.use(helmet());
 
@@ -67,6 +69,12 @@ const corsRouter = require('./routes/cors');
 const photosRouter = require('./routes/photos');
 app.use('/signout', signOutRouter);
 app.use('/cors', corsRouter);
+
+app.use('/graphql', graphqlHTTP({ 
+    schema,
+    graphiql: true,
+}))
+
 app.use('/users', usersRouter);
 app.use('/trips', tripsRouter);
 app.use('/photos', photosRouter);

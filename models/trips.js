@@ -12,6 +12,26 @@ class Trip {
         this.user_id = user_id;
     }
 
+    static getByID(tripId) {
+        return db.one(`
+        SELECT * from trips
+        WHERE id = ${tripId};
+        `)
+        .then(trip => {
+            return( new Trip(
+                trip.id,
+                trip.trip_location,
+                trip.trip_date,
+                trip.lat,
+                trip.lon,
+                trip.trip_details,
+                trip.trip_photos,
+                trip.user_id,
+            ));
+        })
+        .catch(err => err)
+    }
+
     static getTripById(tripId) {
         return db.one(`
         SELECT * from trips
