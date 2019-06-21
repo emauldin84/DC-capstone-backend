@@ -70,10 +70,13 @@ const photosRouter = require('./routes/photos');
 app.use('/signout', signOutRouter);
 app.use('/cors', corsRouter);
 
-app.use('/graphql', graphqlHTTP({ 
-    schema,
-    graphiql: true,
-}))
+app.use('/graphql',(req, res) => {
+    graphqlHTTP({ 
+        schema: schema,
+        graphiql: true,
+    })(req, res)
+})
+
 
 app.use('/users', usersRouter);
 app.use('/trips', tripsRouter);

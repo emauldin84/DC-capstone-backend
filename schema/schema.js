@@ -121,9 +121,34 @@ const MutationQuery = new GraphQLObjectType({
                 console.log('newUser', newUser)
                 return newUser
             }
+        },
+        addTrip: {
+            type: TripsType,
+            args: {
+                trip_location: {type: new GraphQLNonNull(GraphQLString)},
+                trip_date: {type: new GraphQLNonNull(GraphQLString)},
+                lat: {type: new GraphQLNonNull(GraphQLString)},
+                lon: {type: new GraphQLNonNull(GraphQLString)},
+                trip_details: {type: GraphQLString},
+                trip_photos: {type: new GraphQLList(GraphQLString)},
+            },
+            async resolve(parent, args, req){
+                const { trip_location, trip_date, lat, lon, trip_details, trip_photos, } = args
+                let newTrip = await Trips.addNewTripGraphQL(trip_location, trip_date, lat, lon, trip_details, req.session.user.id)
+                console.log('newTrip', newTrip)
+                if(trip_photos) {
+                    const tripWithPhotos = await Trips.addTripPhotoURLGraphQL(newTrip.id, trip_photos)
+                    console.log('tripWithPhotos', tripWithPhotos)
+                    return tripWithPhotos
+                }
+                console.log('newTrip', newTrip)
+                return newTrip
+            }
         }
     }
 })
+
+
 
 module.exports = new GraphQLSchema({
     query: RootQuery,

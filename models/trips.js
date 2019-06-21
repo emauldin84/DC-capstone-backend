@@ -98,6 +98,22 @@ class Trip {
             `, [tripID, updatedList]);
         });
     }
+    static addTripPhotoURLGraphQL(tripID, photoUrlArray){
+        return db.one(`
+            SELECT trip_photos from trips where id=$1
+        `,[tripID])
+        .then(({trip_photos}) => trip_photos)
+        .then((dbPhotos) => {
+            let updatedList;
+            if(!dbPhotos){
+                updatedList = [...photoUrlArray];
+            }
+            else{updatedList = [...dbPhotos, ...photoUrlArray];}
+            return db.one(`
+            UPDATE trips SET trip_photos=$2 where id = $1 returning *
+            `, [tripID, updatedList]);
+        });
+    }
     static removeTripPhotoURL(tripID, offendingURL){
         return db.one(`
             SELECT trip_photos from trips where id=$1
@@ -116,6 +132,14 @@ class Trip {
         return db.one(`
         INSERT INTO trips (trip_location, trip_date, lat, lon, trip_details, user_id)
         VALUES ($1, $2, $3, $4, $5, $6) returning id
+        `, [trip_location, trip_date, lat, lon, trip_details, user_id]
+        );
+    }
+    static addNewTripGraphQL(trip_location, trip_date, lat, lon, trip_details, user_id) {
+        console.log(`Adding a trip to ${trip_location}`);
+        return db.one(`
+        INSERT INTO trips (trip_location, trip_date, lat, lon, trip_details, user_id)
+        VALUES ($1, $2, $3, $4, $5, $6) returning *
         `, [trip_location, trip_date, lat, lon, trip_details, user_id]
         );
     }
