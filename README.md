@@ -1,4 +1,6 @@
-# Flamingo: Jonathan, Eric
+# Flamingo
+#### https://goflamingo.today
+## By Jonathan Ray & Eric Mauldin
 
 ## Full-Stack Capstone Project
 
@@ -22,90 +24,85 @@ Flamingo is a mobile-first, digital interpretation of a familiar way of showing 
 * Trip pins display different colors depending on whether their date is in the past or future.
 
 
-* Ability to register unique login for company employees
-* Add unique items or select prefilled options from categories like furniture.
-* Choose a specific item to simulate purchases over a selected time period
-* User can also generate a random simulation of all items in their inventory
-* Select number of customers per day
-* Increase a specific item's likelihood of purchase
-* Running simulation will show revenue earned, cost of outgoing stock, and profits for that time period
-* After the simulation has run, user can select specific day to visualize inventory amounts and purchase quantities for each item
-* Color coded simulated stock positions help visualize inventory outflows per day
+#### Screenshots and Demo
 
-#### Screenshots
-
-## Sign in page
+## Sign in
 ![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.24.41%20PM.png?raw=true)
 
-## Login page
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/login-page.png)
+## Sign up
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.24.55%20PM.png?raw=true)
 
 ## Dashboard
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/preset-table.png)
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.25.27%20PM.png?raw=true)
 
-## Add Item
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/single-item-popup.png)
+## Add Trip
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.25.51%20PM.png?raw=true)
 
-## Single item simulation
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/one-item-sim.png)
+## Trip Details
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.26.13%20PM.png?raw=true)
 
-## Cash flows
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/cash-flow-visual.png)
+## User Profile
+![alt-text](https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.26.59%20PM.png?raw=true)
 
-## Increase likelihood of purchase
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/increase-likelihood.png)
+## Sign in simulation
+<img src="https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/flaming_signin.gif?raw=true" title="Sign In demo" width="100%"/></img>
 
-## Random simulation result final day
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/random-item-sim.png)
+## Profile simulation
+<img src="https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/flamingo_profile.gif?raw=true" title="Sign In demo" width="100%"/></img>
 
-## Random simulation result day 3
-![alt-text](https://raw.githubusercontent.com/A-DiRusso/oms-project-app/master/images/day-3-random-sim.png)
-
-## Day to day slider simulation visualization
-<img src="https://giant.gfycat.com/IllinformedPoshHarpyeagle.gif" title="Slider Demo" width="1000"/></img>
+## Add Trip simulation
+<img src="https://github.com/emauldin84/DC-capstone-backend/blob/master/screenshots/flamingo_addtrip.gif?raw=true" title="Add Trip demo" width="100%"/></img>
 
 
 #### Technologies
+- React
 - Node.js
 - Express
 - PostgreSQL
 - JavaScript
 - HTML
-- CSS / Bootstrap
-- Mocha (TDD)
+- CSS / Materialize
+- Axios
+- bcrypt
+- Mapbox
+- Autosuggest
+- geocoding APIs
 - AWS
 - Nginx
-- Passport
-- OAuth
+
 
 #### Challenges
-- Challenge #1: Constructing a database architecture using PostgreSQL that we could then build functionality around.
-  - Solution: Organized data into 5 tables (users, customers, items, locations, purchases) that represents the real world information.
+- Challenge #1: 
+  Directly manipulate the dom within React lifecycle methods.
   
-- Challenge #2: Allowing the user to securely add a single item and visualize it on the dashboard
-  - Solution: Using forms, looked for post requests that allowed the user to dynamically manipulate tables in the database. This involved creation of the proper routes, controllers, and models in traditional MVC fashion.
+- Solution: 
+  In order to implement the datepicker and photo carousel provided by Materialize, an approach outside of React was needed.  Understanding of React lifecycle methods led us to employ a myriad of techniques to ensure that the site ran smoothly while two incongruent approaches dynamically displayed the datepicker and image carousel viewer.
   
-- Challenge #3: Allowing the user to visualize inventory outflows of the items they want to test, using a selected number of days and customers.
-  - Solution: Scaled existing functions to work for user entered data and added new functionality that allows the tables to scale appropriately
-
-- Challenge #4: Showing the user how their inventory would change incrementally over time without refreshing the entire page for each increment
-  - Solution: Used client-side JavaScript once the database was changed to visualize the day-to-day changes, without having to query the database again.
-
-- Challenge #5: Understand and implement GitHub OAuth for user login. 
-  - Solution: Have OAuth work beside standard login procedures without interferance or overlap.
   
-
+- Challenge #2:
+  Dynamically store trip data input by the user in the backend and serve automatically.
+  
+- Solution:
+  Update React state input on change and store the new values in the backend on window close. New values will then be served on component remount
+  
+  
+- Challenge #3:
+  Providing responsive `undo` actions to the user
+  
+- Solution:
+  Utilized onclick events to editable fields that, in turn, fire a css class change to display an undo tooltip feature to safe guard against unwanted changes.
+   
+    
 #### MVP
-A user can add items and visualize inventory outflows for one item in their inventory over a fixed number of days.
+A user can add, edit and delete trips that will display on a responsive map/push pin interface.
 
 #### Reach Goals
-- Random simulation using all entered inventory √
-- Make an item more likely to be purchased than others √
-- Build a visualization of change over time √
-- Build inventory replenishment functionality 
+- Add two finger swipe to photo carousel
+- Set map zoom to relative dimensions of the map from page height/width
+- Change date column in PSQL to two columns to include trip start and end dates
+- Add flight information for trips and connect map pins based on connections
 
 #### Authors
-- [Anthony DiRusso](https://github.com/A-DiRusso)
-- [Eric Wittenberg](https://github.com/ebwittenberg)
+- [Jonathan Ray](https://github.com/ray-jonathan)
 - [Eric Mauldin](https://github.com/emauldin84)
   
